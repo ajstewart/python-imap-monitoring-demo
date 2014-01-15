@@ -9,4 +9,10 @@ wait_time_in_seconds = 10
 file_source = 'localhost:/tmp/test_sourcedir'
 file_dest = '/tmp/test_destdir'
 
+#Choose to send an email back to sender when successful or to alternative address if transfer fails
+send_confirmation_mail=True
+send_magic_subject_words = ['file', 'downloaded']
+error_message_address= 'receive.error.address@gmail.com'
+send_error_subject_words = ['file','transfer','error']
+
 

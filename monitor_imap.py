@@ -9,6 +9,8 @@ from imbox import Imbox
 
 import dirutils
 import transfer_config as conf
+import send_confirmation_email as send_confirm
+
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s',)
 logger = logging.getLogger(__name__)
 
@@ -54,11 +56,19 @@ def monitor_loop():
             print cmd
             subprocess.check_call(cmd, shell=True)
             logging.info("Transferred " + fname + " successfully.")
+            problem=False
         except Exception as e:
             logging.error("Error transferring file:" + fname)
             logging.error("Error reads:" + str(e))
+            problem=True
         finally:
             mail_login.mark_seen(uid)
+        if conf.send_confirmation_mail:
+            try:
+                sentto=send_confirm.send_confirmation(fname, problem)
+                logging.info("Response email sent to {0}".format(sentto))
+            except:
+                logging.error("Response email not sent!")
     
     logger.debug("Going to sleep.")
     mail_login.logout()
