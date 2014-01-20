@@ -51,7 +51,7 @@ def monitor_loop():
 #         args= ['rsync', '-rav ']
 #         args.append(src)
 #         args.append(dest)
-        cmd = ' '.join(('rsync -av ', src, dest))
+        cmd = ' '.join(('wget', src, dest))
         try:
             print cmd
             subprocess.check_call(cmd, shell=True)
@@ -69,7 +69,9 @@ def monitor_loop():
                 logging.info("Response email sent to {0}".format(sentto))
             except:
                 logging.error("Response email not sent!")
-    
+    logger.debug("Processing recieved files")
+    for f in sorted(files.values()):
+        subprocess.call("echo PUT SCRIPT HERE {0}".format(f), shell=True)
     logger.debug("Going to sleep.")
     mail_login.logout()
     time.sleep(conf.wait_time_in_seconds)
