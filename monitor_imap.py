@@ -69,7 +69,7 @@ def monitor_loop():
                 logging.info("Response email sent to {0}".format(sentto))
             except:
                 logging.error("Response email not sent!")
-    if len(files.values)>0:
+    if len(files.values())>0:
 		logger.debug("Processing recieved files")
 	    for f in sorted(files.values()):
 	        workfile=os.path.join(dest, f)
