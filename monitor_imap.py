@@ -69,10 +69,11 @@ def monitor_loop():
                 logging.info("Response email sent to {0}".format(sentto))
             except:
                 logging.error("Response email not sent!")
-    logger.debug("Processing recieved files")
-    for f in sorted(files.values()):
-        workfile=os.path.join(dest, f)
-        subprocess.call("echo PUT SCRIPT HERE {0}".format(workfile), shell=True)
+    if len(files.values)>0:
+		logger.debug("Processing recieved files")
+	    for f in sorted(files.values()):
+	        workfile=os.path.join(dest, f)
+	        subprocess.call("echo PUT SCRIPT HERE {0}".format(workfile), shell=True)
     logger.debug("Going to sleep.")
     mail_login.logout()
     time.sleep(conf.wait_time_in_seconds)
