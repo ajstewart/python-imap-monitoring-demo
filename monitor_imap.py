@@ -72,8 +72,8 @@ def monitor_loop():
     if len(files.values())>0:
 		logger.debug("Processing recieved files")
 	    for f in sorted(files.values()):
-	        workfile=os.path.join(dest, f)
-	        subprocess.call("echo PUT SCRIPT HERE {0}".format(workfile), shell=True)
+	        workfile=os.path.join(conf.monitor_dest, f)
+	        subprocess.call("touch {0}.txt", shell=True)
     logger.debug("Going to sleep.")
     mail_login.logout()
     time.sleep(conf.wait_time_in_seconds)
