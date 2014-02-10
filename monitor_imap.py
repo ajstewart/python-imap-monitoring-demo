@@ -70,8 +70,8 @@ def monitor_loop():
             except:
                 logging.error("Response email not sent!")
     if len(files.values())>0:
-		logger.debug("Processing recieved files")
-	    for f in sorted(files.values()):
+        logger.debug("Processing recieved files")
+        for f in sorted(files.values()):
 	        workfile=os.path.join(conf.monitor_dest, f)
 	        subprocess.call("touch {0}.txt", shell=True)
     logger.debug("Going to sleep.")
