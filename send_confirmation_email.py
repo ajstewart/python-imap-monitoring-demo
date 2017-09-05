@@ -5,14 +5,21 @@ import transfer_config as conf
 import dirutils
 from envelopes import Envelope, SMTP
 
-def send_confirmation(file_name, problem):
+def send_confirmation(file_name, problem, subject="", to=""):
 	if problem==True:
 		to=conf.error_message_address
-		sub=" ".join(conf.send_error_subject_words + [file_name])
+		if subject=="":
+			sub=" ".join(conf.send_error_subject_words) + " " + file_name
+		else:
+			sub=" ".join(conf.send_error_subject_words)+" - "+subject
 		text='File not downloaded'
 	else:
-		to=conf.special_message_sender
-		sub=" ".join(conf.send_magic_subject_words + [file_name])
+		if to=="":
+			to=conf.send_confirmation_to
+		if subject=="":
+			sub=" ".join(conf.send_magic_subject_words) + " " + file_name
+		else:
+			sub=" ".join(conf.send_magic_subject_words)+" - "+subject
 		text='File Downloaded'
 	msg = Envelope(to_addr=(to, to),
 	               from_addr=(conf.account_username, conf.account_username),
