@@ -11,7 +11,7 @@ def send_confirmation(file_name, problem):
 		sub=" ".join(conf.send_error_subject_words + [file_name])
 		text='File not downloaded'
 	else:
-		to=conf.special_message_sender
+		to=conf.send_confirmation_to
 		sub=" ".join(conf.send_magic_subject_words + [file_name])
 		text='File Downloaded'
 	msg = Envelope(to_addr=(to, to),
