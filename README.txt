@@ -4,6 +4,14 @@ The main loop in the monitor_imap script has commands specific to the agreed ema
 
 It also includes a function to send confirmation emails that I have added.
 
+Instructions:
+
+* Copy the transfer_config_example.py to transfer_config.py and change the values accordingly.
+
+* Run the monitor by 'python monitor_imap.py'.
+
+* The above can be set as a crontab task rather than using the wait loop in the script.
+
 ---------------------------------
 
 `Procmail for the Python+GMail generation';
