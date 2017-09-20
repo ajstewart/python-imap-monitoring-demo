@@ -5,7 +5,7 @@ import transfer_config as conf
 import dirutils
 from envelopes import Envelope, SMTP
 
-def send_confirmation(file_name, problem, subject="", to=""):
+def send_confirmation(file_name, problem, subject="", to="", cc=""):
 	if problem==True:
 		to=conf.error_message_address
 		if subject=="":
@@ -26,6 +26,9 @@ def send_confirmation(file_name, problem, subject="", to=""):
 	               subject=sub,
 	               text_body=text)
 
+	if cc!="":
+		msg.add_cc_addr(cc)
+	
 	gmail = SMTP(host='smtp.googlemail.com', port=587,
 	             login=conf.account_username, password=conf.account_pass, tls=True)
 

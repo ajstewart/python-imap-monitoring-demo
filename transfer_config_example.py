@@ -13,6 +13,7 @@ monitor_dest= '/dir/to/put/notify/file'
 #Choose to send an email back to sender when successful or to alternative address if transfer fails
 send_confirmation_mail=True
 send_confirmation_to = special_message_sender
+cc_confirmation_to = ""
 send_magic_subject_words = ['file', 'downloaded']
 error_message_address= 'receive.error.address@gmail.com'
 send_error_subject_words = ['file','transfer','error']
