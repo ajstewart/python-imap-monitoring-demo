@@ -43,7 +43,7 @@ def monitor_loop():
             and len(msg.subject.split()) == n_magic + 3
             ):
             tempsplit=msg.body['plain'][0].split("\r\n") # read the message body and split it to get info
-            obslength=float(temp[2].split(" = ")[-1]) # Unique to CHILES, I fetch the observation length from the body
+            obslength=float(tempsplit[2].split(" = ")[-1]) # Unique to CHILES, I fetch the observation length from the body
             # (The Obs length is used later when organising the files - ignore commented lines below)
             # for t in tempsplit:
                 # if "SB length (hr)" in t:
